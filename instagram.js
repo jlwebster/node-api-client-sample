@@ -34,7 +34,7 @@ var options = {
 
 var access_id = '<ACCESS_ID>';
 var secret = '<SECRET>';
-options = require('./lib/api_auth').auth(access_id, secret).sign_options(options, instagram);
+options = require('api_auth').auth(access_id, secret).sign_options(options, instagram);
 
 //Make request
 var req = http.request(options, function(res){
