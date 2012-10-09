@@ -3,7 +3,7 @@ node-api-client-sample
 
 Node api client sample
 
-Steps:
+Rough Steps:
 ======================
 1. git clone git://github.com/jlwebster/node-api-client-sample.git
 1. cd node-api-client-sample
