@@ -1,0 +1,16 @@
+{
+  "result": 200,
+  "desc": "video description",
+  "medias": 
+  [
+    {
+      "id": 1234,
+      "type": "popular",
+      "title": "video title",
+      "thumbnail": "thumb.png",
+      "duration": 123,
+      "share": "http://www.viddy.com/...",
+      "short_url": "http://sho.rt/url"
+    }
+  ]
+}
