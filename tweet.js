@@ -15,14 +15,11 @@ fs.readFile('./sample_json/tweet.json', 'utf8', function(err, tweet) {
     data: JSON.parse(tweet)
   };
 
-  // Add additional custom properties to the tweet
-  payload.data.guid = require('node-uuid').v1();
-  
   // Stringify data for post call
   payload = JSON.stringify(payload);
   // The api requies that unicode chars are escaped
   payload = utils.escapeUnicode(payload);
-
+  
   // Set up request options hash
   var options = {
     host: config.host,
@@ -33,7 +30,7 @@ fs.readFile('./sample_json/tweet.json', 'utf8', function(err, tweet) {
       'Content-Length': payload.length,
       'Content-Type': 'application/json'
     }
-  }
+  };
 
   // Sign request options hash
   options = require('api_auth').auth(config.access_id, config.secret).sign_options(options, payload);

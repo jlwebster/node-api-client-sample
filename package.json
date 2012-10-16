@@ -6,6 +6,7 @@
     "crypto": "*",
     "moment": "*",
     "node-uuid": "*",
-    "api_auth": "*"
+    "api_auth": "*",
+    "knox": "*"
   }
 }
