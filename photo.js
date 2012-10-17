@@ -25,7 +25,9 @@ client.putFile('sample.jpg', photo_s3_path, {'x-amz-acl': 'public-read'}, functi
       type: "photo",
       data: {
         temp_photo_path: photo_s3_path,
-        for_website: true, // Flag indicating if this is from moderation or just for sharing from the user
+        public: true, // Flag indicating if this is from moderation or just for sharing from the user
+        source: 'viewfinder', // Valid values are: viewfinder, kiosk
+        location: 'photobooth', // Valid values are: city, photobooth, viewfinder
         name: "Photo Name",
         author: "author_handle"
       }
@@ -53,6 +55,10 @@ client.putFile('sample.jpg', photo_s3_path, {'x-amz-acl': 'public-read'}, functi
     var req = http.request(options, function(res){
       res.setEncoding('utf8'); //Encode response as UTF8 string
 
+      // Url for photo
+      var url = res.headers['location'];
+      console.log(url);
+
       // Data will be sent back in chunks
       // Concatenate the strings until all chunks received
       res.on('data', function(chunk){
@@ -63,13 +69,6 @@ client.putFile('sample.jpg', photo_s3_path, {'x-amz-acl': 'public-read'}, functi
       res.on('end', function(){
         // Now you have the response from the api call
         console.log(response);
-
-        // This is the url to the photo page:
-        photo = JSON.parse(response);
-        url = 'http://' + config.host;
-        if (config.port) url += ':' + config.port;
-        url += '/photos/' + photo['_id']
-        console.log(url);
       })
 
       // Error handling for request
