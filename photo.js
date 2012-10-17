@@ -26,8 +26,7 @@ client.putFile('sample.jpg', photo_s3_path, {'x-amz-acl': 'public-read'}, functi
       data: {
         temp_photo_path: photo_s3_path,
         public: true, // Flag indicating if this is from moderation or just for sharing from the user
-        source: 'viewfinder', // Valid values are: viewfinder, kiosk
-        location: 'photobooth', // Valid values are: city, photobooth, viewfinder
+        source: 'vf', // Valid values are: vf, kiosk
         name: "Photo Name",
         author: "author_handle"
       }
